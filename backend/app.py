@@ -1,4 +1,3 @@
-
 # Import necessary libraries
 from flask import Flask, request, jsonify
 from langchain_huggingface import HuggingFaceEmbeddings
