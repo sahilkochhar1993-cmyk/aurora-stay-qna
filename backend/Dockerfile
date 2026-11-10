@@ -11,8 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 ENV HF_HOME=/app/huggingface
 
-# Download the model at build time
-RUN python -c "\from langchain_huggingface import HuggingFaceEmbeddings; HuggingFaceEmbeddings(     model_name='HarishMaths/Hotel-Policy-Embedding',     model_kwargs={'device': 'cpu'},     encode_kwargs={'normalize_embeddings': True} )"
+# Download the model at build time using a clean execution block
+RUN python -c "from langchain_huggingface import HuggingFaceEmbeddings; HuggingFaceEmbeddings(model_name='HarishMaths/Hotel-Policy-Embedding', model_kwargs={'device': 'cpu'}, encode_kwargs={'normalize_embeddings': True})"
 
 # Force offline mode at runtime so it uses the cached model
 ENV TRANSFORMERS_OFFLINE=1
